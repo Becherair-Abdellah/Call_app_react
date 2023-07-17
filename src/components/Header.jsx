@@ -5,7 +5,7 @@ import logo from '../imgs/logo.png'
 import avatar from '../imgs/avatar.png';
 import {motion} from 'framer-motion'
 import Links from "./Links";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsView } from "../redux/Reducers";
 function Header() {
@@ -18,6 +18,10 @@ function Header() {
         const response = await signInWithPopup(firebaseAuth,provider)
         console.log(response)
     }
+    const myREf = useRef();
+    useEffect(()=>{
+      console.log(myREf.current)
+    });
   return (
     <div className=" p-2 text-center mx-auto bg-gray-50 select-none" >
       <div className="w-[90%] p-3 flex justify-between items-center mx-auto" >
@@ -36,7 +40,7 @@ function Header() {
       }} className="w-12 shadow-md rounded-full cursor-pointer " alt="" onClick={()=>{
         dispatch(setIsView());
       }} />
-      {isView && <Links/>}
+      {isView && <Links />}
       </div>
       </div>
     </div>
