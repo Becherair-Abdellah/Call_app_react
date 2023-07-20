@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
-// create Slice
+import { data_of_user } from '../utils/FetchDataLocalStorage';
+// create Slice is view manu bar 
 const is_view = createSlice({
     name:'is_view',
     initialState: false,
@@ -8,7 +9,7 @@ const is_view = createSlice({
     }
 });
 
-// create Slice
+// create Slice is login
 const is_Login = createSlice({
     name:'is_login',
     initialState: false,
@@ -19,14 +20,19 @@ const is_Login = createSlice({
 
 // create Slice 
 // create Slice
+const initStat_data = data_of_user();
+// console.log(initStat_data)
 const data_user = createSlice({
     name:'data_user',
-    initialState: '',
+    initialState: {
+        user: null,
+    },
     reducers:{
         set_Data_user(state,action){
-            console.log(state);
-            console.log(action);
-            return action.payload
+            // console.log(state);
+            // console.log(action);
+            state.user = action.payload
+            // return action.payload
         }
     }
 }); 

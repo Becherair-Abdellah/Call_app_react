@@ -2,7 +2,7 @@
 import {motion} from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsView} from '../redux/Reducers';
+import { setIsView,setIsLogin} from '../redux/Reducers';
 import {FiLogOut} from 'react-icons/fi';
 export default function Links() {
   const linkRef = useRef();
@@ -28,7 +28,13 @@ export default function Links() {
     // document.removeEventListener('click',handleClick);
     document.removeEventListener('click',handleClick);
     }
-  },[])
+  },[]);
+    // handle logout function 
+    const logout = ()=>{
+      console.log('runing');
+      dispatch(setIsLogin());
+      localStorage.clear();
+    };
   return (
     <motion.div initial={{ opacity: 0, scale: 0.5 }}
     animate={{ opacity: 1, scale: 1 }}
@@ -38,7 +44,7 @@ export default function Links() {
         <li className='mt-2 hover:text-red-500 cursor-pointer'>Services</li>
         <li className='mt-2 hover:text-red-500 cursor-pointer'>About us</li>
         <li className='mt-2 hover:text-red-500 cursor-pointer'>Contact</li>
-        {isLogin && <li className='mt-2 hover:text-red-500 cursor-pointer flex gap-4 items-center'><FiLogOut/>logout</li>}
+        {isLogin && <li onClick={()=>logout()} className='mt-2 hover:text-red-500 cursor-pointer flex gap-4 items-center'><FiLogOut/>logout</li>}
       </ul>
     </motion.div>
   )
