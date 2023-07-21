@@ -36,13 +36,26 @@ const data_user = createSlice({
         }
     }
 }); 
+const counter_items = createSlice({
+    name:'counter_items',
+    initialState: 0,
+    reducers:{
+        increment: (state)=>{
+            return state = state+1},
+        decrement: (state)=>{
+            return state = state-1}
+    }
+}); 
+
 
 export const  {setIsView} = is_view.actions;
 export const  {setIsLogin} = is_Login.actions;
 export const  {set_Data_user} = data_user.actions;
+export const  {increment,decrement} = counter_items.actions;
 export {   
     is_view,
     is_Login,
     data_user,
+    counter_items
 } 
     

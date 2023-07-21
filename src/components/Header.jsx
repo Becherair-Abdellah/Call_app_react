@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsView ,setIsLogin,set_Data_user} from "../redux/Reducers";
 import { data_of_user } from "../utils/FetchDataLocalStorage";
 import NumItem from "./NumItem";
+import { increment } from "../redux/Reducers";
 function Header() {
  
   // console.log(data_of_user().photoURL)
@@ -57,6 +58,9 @@ function Header() {
           {isView && <Links />}
         </div>
       </div>
+      {/* <button onClick={()=>{
+        dispatch(increment());
+      }} >Click Here PLease</button> */}
     </div>
 
   )
